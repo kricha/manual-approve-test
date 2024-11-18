@@ -1,0 +1,26 @@
+name: Manual release
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: release
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    environment: prod
+
+    steps:
+      - name: Prepare release
+        run: echo "Prepare release"
+  release:
+    runs-on: ubuntu-latest
+    environment: release
+
+    steps:
+      - name: Release
+        run: echo "Done!!!!"
